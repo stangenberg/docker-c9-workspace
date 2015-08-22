@@ -45,7 +45,7 @@ RUN \
   apt-get install -y libssl-dev && \
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.0/install.sh | bash && \
   . /root/.nvm/nvm.sh && \
-  nvm install v0.12.7
+  nvm install stable
 
 # Create workspace directory
 RUN mkdir ~/ws
