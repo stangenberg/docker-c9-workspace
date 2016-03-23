@@ -2,18 +2,23 @@
 
 cloud9 workspace with docker
 
-Dockerhub: [thstangenberg/c9-workspace][dockerhub]
+[![Docker Stars](https://img.shields.io/docker/stars/stangenberg/c9-workspace.svg)][dockerhub] [![Docker Pulls](https://img.shields.io/docker/pulls/stangenberg/c9-workspace.svg)][dockerhub] [![Image Size](https://img.shields.io/imagelayers/image-size/stangenberg/c9-workspace/latest.svg)](https://imagelayers.io/?images=stangenberg/baseimage:latest) [![Image Layers](https://img.shields.io/imagelayers/layers/stangenberg/c9-workspace/latest.svg)](https://imagelayers.io/?images=stangenberg/baseimage:latest)
+
+
+Dockerhub: [stangenberg/c9-workspace][dockerhub]
 
 ## Features ##
 
-- Feature A
-- Feature B
-- Feature C
+- c9.io ssh workspace
+- java 8
+- nvm v0.31.0
+- docker compose
+- lightbend activator
 
 
 ## Exposed volumes ##
 
-None.
+- /workspace
 
 
 ## Exposed ports ##
@@ -23,7 +28,10 @@ None.
 
 ## Environment Variables
 
-None.
+- DOCKER_COMPOSE_VERSION
+- ACTIVATOR_VERSION
+- NVM_VERSION
+- JAVA_HOME
 
 
 ## Usage ##
@@ -50,5 +58,5 @@ Make is used as build system.
 
 [Published under the MIT License][LICENSE]
 
-[DOCKERHUB]: https://hub.docker.com/u/stangenberg/docker-c9-workspace
+[DOCKERHUB]: https://hub.docker.com/r/stangenberg/c9-workspace
 [LICENSE]: https://bitbucket.org/stangenberg/docker-c9-workspace/src/master/LICENSE.md "Published under the MIT License"
