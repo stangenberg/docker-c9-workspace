@@ -53,6 +53,18 @@ RUN \
   . /root/.nvm/nvm.sh && \
   nvm install stable
 
+# install tools & oh-my-zsh
+RUN \
+  apt-get install -y \
+    git \
+    tree \
+    zsh && \
+  git clone https://github.com/tstangenberg/oh-my-zsh.git ~/.oh-my-zsh && \
+  cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && \
+  chsh -s /bin/zsh
+ADD zshrc ~/.zshrc
+ADD tmux.conf ~/.tmux.conf
+
 # Create workspace directory
 RUN mkdir /workspace
 
@@ -66,21 +78,10 @@ RUN rm -f /etc/service/sshd/down && \
 # init system will auto-generate one during boot.
   /etc/my_init.d/00_regen_ssh_host_keys.sh
 
-# add ssh key
-RUN touch ~/.ssh/authorized_keys && \
-    sed -i '$ a\ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDeI07XG0lI2+/9vtY3qjwT2Nc41oyrfwdjrVtvXQ/OYXVdJL8NxAN3U71AO9p1kus0pWclqwmEjyqas7NXRFO3m3v1m0OarkoAnF8cW1dcALvbcYtK4bT55qi449d7YF5dSfyXcYXu9tFUvhmqFy664Esu8mh8OzH2Zrfq261v9RjVHNHqFdcf82p89/Vr8IHotnmI1Hg8VuWtN6bT8pJP493EF36AH2AfWafVvJTXEOTfUZEpG52qcT9seCRNa0odThOTNT31jKAZeVtzrc6KGuj5zawyRz9sZkUQxs2jbEJE9mnz8yWlGjIU/6oKvHcW61HWAX3e+zDOL6QILrU5 thorben@stangenberg.ch' ~/.ssh/authorized_keys
+# add authorized_keys
+ADD authorized_keys.txt ~.ssh/authorized_keys
 
-# install tools & oh-my-zsh
-RUN \
-  apt-get install -y \
-    git \
-    tree \
-    zsh && \
-  git clone https://github.com/tstangenberg/oh-my-zsh.git ~/.oh-my-zsh && \
-  cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && \
-  chsh -s /bin/zsh
-ADD zshrc ~/.zshrc
-ADD tmux.conf ~/.tmux.conf
+EXPOSE 22
 
 # Clean up when done.
 RUN apt-get clean && \
