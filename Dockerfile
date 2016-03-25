@@ -79,7 +79,7 @@ RUN rm -f /etc/service/sshd/down && \
   /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # add authorized_keys
-ADD authorized_keys.txt ~.ssh/authorized_keys
+ADD authorized_keys.txt /root/.ssh/authorized_keys
 
 EXPOSE 22
 
