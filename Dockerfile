@@ -46,13 +46,6 @@ RUN \
 ENV \
   ACTIVATOR_HOME=/opt/activator-$ACTIVATOR_VERSION-minimal
 
-# install nvm node
-RUN \
-  apt-get install -y libssl-dev && \
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh | bash && \
-  . /root/.nvm/nvm.sh && \
-  nvm install stable
-
 # install tools & oh-my-zsh
 RUN \
   apt-get install -y \
@@ -65,6 +58,12 @@ RUN \
 ADD zshrc ~/.zshrc
 ADD tmux.conf ~/.tmux.conf
 
+# install nvm node
+RUN \
+  apt-get install -y libssl-dev node.js && \
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh | bash && \
+  . /root/.nvm/nvm.sh
+
 # Create workspace directory
 RUN mkdir /workspace
 
@@ -72,7 +71,8 @@ RUN mkdir /workspace
 VOLUME /workspace
 
 # enable ssh deamon
-RUN rm -f /etc/service/sshd/down && \
+RUN \
+  rm -f /etc/service/sshd/down && \
 # Regenerate SSH host keys. baseimage-docker does not contain any, so you
 # have to do that yourself. You may also comment out this instruction; the
 # init system will auto-generate one during boot.
