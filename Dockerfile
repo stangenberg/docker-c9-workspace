@@ -81,7 +81,11 @@ RUN \
 # add authorized_keys
 ADD authorized_keys.txt /root/.ssh/authorized_keys
 
-EXPOSE 22
+EXPOSE \
+  # shh port
+  22 \
+  # c9.io mapped preview ports
+  8080 8081 8082
 
 # Clean up when done.
 RUN apt-get clean && \

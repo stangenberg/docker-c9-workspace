@@ -25,7 +25,7 @@ Dockerhub: [stangenberg/c9-workspace][dockerhub]
 ## Exposed ports ##
 
 - 22 / SSH 
-
+- 8080, 8081, 8082 / c9.io mapped preview ports 
 
 ## Environment Variables
 
