@@ -2,7 +2,7 @@
 
 cloud9 workspace with docker
 
-[![Docker Stars](https://img.shields.io/docker/stars/stangenberg/c9-workspace.svg)][dockerhub] [![Docker Pulls](https://img.shields.io/docker/pulls/stangenberg/c9-workspace.svg)][dockerhub] [![Image Size](https://img.shields.io/imagelayers/image-size/stangenberg/c9-workspace/latest.svg)](https://imagelayers.io/?images=stangenberg/baseimage:latest) [![Image Layers](https://img.shields.io/imagelayers/layers/stangenberg/c9-workspace/latest.svg)](https://imagelayers.io/?images=stangenberg/baseimage:latest)
+[![Docker Stars](https://img.shields.io/docker/stars/stangenberg/c9-workspace.svg)][dockerhub] [![Docker Pulls](https://img.shields.io/docker/pulls/stangenberg/c9-workspace.svg)][dockerhub] [![Image Size](https://img.shields.io/imagelayers/image-size/stangenberg/c9-workspace/latest.svg)](https://imagelayers.io/?images=stangenberg/c9-workspace:latest) [![Image Layers](https://img.shields.io/imagelayers/layers/stangenberg/c9-workspace/latest.svg)](https://imagelayers.io/?images=stangenberg/c9-workspace:latest)
 
 
 Dockerhub: [stangenberg/c9-workspace][dockerhub]
@@ -11,6 +11,7 @@ Dockerhub: [stangenberg/c9-workspace][dockerhub]
 
 - c9.io ssh workspace
 - java 8
+- nodejs
 - nvm v0.31.0
 - docker compose
 - lightbend activator
@@ -36,10 +37,11 @@ Dockerhub: [stangenberg/c9-workspace][dockerhub]
 
 ## Usage ##
 
-This is a template for new docker images
-See [https://github.com/phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) for usage
+1. Start a container.
+  
+  `docker run --name="c9-workspace" -p 22 stangenberg/c9-workspace:latest`
 
-Write here what to do with it and how - example run commands
+2. Connect a c9.io ssh workspace to the container.
 
 
 ## Build 
