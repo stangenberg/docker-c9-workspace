@@ -24,11 +24,11 @@ ncbuild:
 	
 # normal run
 run: clean
-	docker run --privileged --name="$(CONTAINER_NAME)" $(DOCKER_USER)/$(DOCKER_IMAGE):$(DOCKER_TAG)
+	docker run --name="$(CONTAINER_NAME)" -p 2202:22 $(DOCKER_USER)/$(DOCKER_IMAGE):$(DOCKER_TAG)
 
 # run to bash 
 bash: clean
-	docker run -t -i --privileged --name="$(CONTAINER_NAME)" $(DOCKER_USER)/$(DOCKER_IMAGE):$(DOCKER_TAG) /sbin/my_init -- zsh -l
+	docker run -t -i --name="$(CONTAINER_NAME)" -p 2202:22 $(DOCKER_USER)/$(DOCKER_IMAGE):$(DOCKER_TAG) /sbin/my_init -- zsh -l
 
 # Removes existing containers.
 clean:
